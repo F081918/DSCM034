@@ -56,5 +56,5 @@ jobs:
 
     - name: Deploy to Minikube
       run: |
-        kubectl apply -f $GITHUB_WORKSPACE/ml-deployment.yaml
-        kubectl apply -f $GITHUB_WORKSPACE/ml-service.yaml
+        kubectl apply -f ${GITHUB_WORKSPACE}/ml-deployment.yaml
+        kubectl apply -f ${GITHUB_WORKSPACE}/ml-service.yaml

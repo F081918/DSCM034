@@ -57,14 +57,16 @@ jobs:
     - name: Set up kubectl
       run: |
         minikube kubectl -- get po -A
-        mkdir -p $HOME/.kube
-        touch $HOME/.kube/config
         minikube kubectl -- config view --raw > $HOME/.kube/config
+
+    - name: Use Minikube context
+      run: |
+        kubectl config use-context minikube
 
     - name: List files for debugging
       run: ls -R $GITHUB_WORKSPACE
 
     - name: Deploy to Minikube
       run: |
-        minikube kubectl -- apply -f ${GITHUB_WORKSPACE}/ml-deployment.yaml
-        minikube kubectl -- apply -f ${GITHUB_WORKSPACE}/ml-service.yaml
+        kubectl apply -f ${GITHUB_WORKSPACE}/ml-deployment.yaml
+        kubectl apply -f ${GITHUB_WORKSPACE}/ml-service.yaml

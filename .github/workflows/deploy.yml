@@ -54,6 +54,9 @@ jobs:
         touch $HOME/.kube/config
         minikube kubectl -- config view --raw > $HOME/.kube/config
 
+    - name: List files for debugging
+      run: ls -R $GITHUB_WORKSPACE
+
     - name: Deploy to Minikube
       run: |
         kubectl apply -f ${GITHUB_WORKSPACE}/ml-deployment.yaml

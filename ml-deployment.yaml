@@ -15,6 +15,5 @@ spec:
       containers:
         - name: ml-container
           image: ml-app:1.0
-          imagePullPolicy: Never
           ports:
             - containerPort: 80
